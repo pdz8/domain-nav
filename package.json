@@ -1,0 +1,13 @@
+{
+  "title": "Domain Navigate",
+  "name": "domain-nav",
+  "version": "0.0.1",
+  "description": "Adds forward/backward browser navigations that jumps across domains instead of individual pages.",
+  "main": "index.js",
+  "author": "Peter Zieske",
+  "engines": {
+    "firefox": ">=38.0a1",
+    "fennec": ">=38.0a1"
+  },
+  "license": "MIT"
+}
