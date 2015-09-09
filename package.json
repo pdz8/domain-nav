@@ -9,5 +9,14 @@
     "firefox": ">=38.0a1",
     "fennec": ">=38.0a1"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "preferences": [
+    {
+      "name": "enableHotkeys",
+      "title": "Hotkeys",
+      "description": "Enable [ctrl-backspace] and [ctrl-shift-backspace] hotkeys?",
+      "type": "bool",
+      "value": true
+    }
+  ]
 }

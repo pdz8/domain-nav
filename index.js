@@ -2,6 +2,8 @@ var buttons = require('sdk/ui/button/action');
 var self = require('sdk/self');
 var tabs = require('sdk/tabs');
 var url = require('sdk/url');
+var preferences = require("sdk/simple-prefs").prefs;
+var { Hotkey } = require("sdk/hotkeys");
 
 
 /////////
@@ -35,14 +37,13 @@ function jumpDomain(sign) {
   }
 
   // Navigate to index
-  console.log('jumpIndex: ' + jumpIndex);
   gBrowser.webNavigation.gotoIndex(jumpIndex);
 }
 
 
-//////////////
-// Handlers //
-//////////////
+/////////////
+// Buttons //
+/////////////
 
 var backButton = buttons.ActionButton({
   id: 'domain-back',
@@ -71,3 +72,39 @@ var forwardButton = buttons.ActionButton({
 function forwardClickHandler(state) {
   jumpDomain(1);
 }
+
+
+/////////////
+// Hotkeys //
+/////////////
+
+var backHotkey = null;
+var forwardHotkey = null;
+
+function setHotkeyState(enabled) {
+  if (enabled && !backHotkey) {
+    backHotkey = Hotkey({
+      combo: 'accel-backspace',
+      onPress: function() {
+        jumpDomain(-1);
+      }
+    });
+    forwardHotkey = Hotkey({
+      combo: 'accel-shift-backspace',
+      onPress: function() {
+        jumpDomain(1);
+      }
+    });
+  } else if (!enabled && backHotkey) {
+    backHotkey.destroy();
+    backHotkey = null;
+    forwardHotkey.destroy();
+    forwardHotkey = null;
+  }
+}
+
+function updateHotkeyState() {
+  setHotkeyState(preferences.enableHotkeys);
+}
+require("sdk/simple-prefs").on('enableHotkeys', updateHotkeyState);
+updateHotkeyState();
