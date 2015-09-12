@@ -1,0 +1,9 @@
+sandbox/
+*.sublime-workspace
+*.sublime-project
+*.xpi
+.gitignore
+.git/
+.jpmignore
+test/
+
