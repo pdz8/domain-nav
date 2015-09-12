@@ -1,6 +1,6 @@
 # Domain Navigate
 
-Domain Navigate is a Firefox extension that enables quicker back/forth navigation through session history.
+[Domain Navigate](https://addons.mozilla.org/en-US/firefox/addon/domain-navigate/) is a Firefox extension that enables quicker back/forth navigation through session history.
 Instead of going just one page back, the Domain Navigate back button skips all the way back to the previous domain's last visited page (and similarly for forward).
 
 ### How is this useful?
